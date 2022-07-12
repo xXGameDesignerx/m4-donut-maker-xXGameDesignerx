@@ -1,0 +1,61 @@
+#donutBody{
+    background-color: lightcoral;
+}
+#title{
+    color: darkorchid;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.button{
+    padding: 3.5px;
+    font-size: large;
+}
+#button{
+    font-size: larger;
+}
+header{
+    background-color: lightgray;
+	display: flex;
+	justify-content: space-between;
+	grid-column: 1 / -1;
+	padding: 5px 20px;
+}
+header nav ul {
+	display: flex;
+	list-style-type: none;
+    justify-content: space-evenly;
+    width:400px
+}
+#gridbody{
+    display: grid;
+    padding: 1.2rem 0.5rem;
+    background-color: darkorchid;
+    color: pink;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: black;
+    width: 400px;
+}
+.p, .button, ul{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique;
+}
+.p{
+    font-size: Larger;
+    font-weight: 100;
+    font-feature-settings: "abvf";
+}
+#header{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    color:crimson;
+}
+.underline:hover{
+    background-color: gray;
+    transition: 2s;
+    transform: scale(1.07);
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,30 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <p>Donut count: </p>
-    <button type="button" onclick="Bake">Click for donuts!</button>
-    <p>Auto Clicker Owned: </p>
-    <button type="button" onclick="AutoClicker">Purchase Auto Clicker!</button>
-    <p>Donut Multiplyer Owned: </p>
-    <button type="button" onclick="Multiply">Purchase Multiplyer!</button>
-    <p>Reseting the Game: </p>
-    <button type="button" onclick="Reset">Reset Game!</button>
+
+<body id="donutBody">
+    <header id="header">
+        <nav>
+            <button id="button" type = "button" onclick="Dropdown()">Menu</button>
+            <ul>
+                <li class="underline">Main</li>
+                <Li class="underline">Fred the Baker Company</Li>
+                <li class="underline">Cookie Clicker</li>
+            </ul>
+        </nav>
+    </header>
+    <h1 id="title">The Donut Maker Game</h1>
+    <div id="gridbody">
+        <p class="p">Donut Count: <span id="Bake"></span></p>
+        <button class="button" type="button" onclick="Bake()">Click for donuts!</button>
+        <p class="p">Auto Clicker Owned: <span id="AutoClick"></span></p>
+        <button class="button" type="button" onclick="AutoClick()">Purchase Auto Clicker!</button>
+        <p class="p">Donut Multiplyer Owned: <span id="Multipy"></span></p>
+        <button class="button" type="button" onclick="Multiply()">Purchase Multiplyer!</button>
+        <p class="p">Reset the Game:</p>
+        <button class="button" type="button" onclick="Reset">Reset Game!</button>
+    </div>
 </body>
 <script src="DonutMaker.js"></script>
+
 </html>
