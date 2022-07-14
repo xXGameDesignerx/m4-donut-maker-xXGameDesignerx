@@ -1,20 +1,18 @@
+
 let bake = 0;
 let multiply = 0;
 let autoclick = 0;
 let Mcost = 45;
 let Acost = 20;
-disableButton();
-
-let counter = 0;
 let timer = undefined;
-
+let reset = false;
 
 let BakeDonuts = document.getElementById("bakeButton");
 BakeDonuts.addEventListener("click", Bake);
 let MultiplyDonuts = document.getElementById("multiplyButton");
-MultiplyDonuts.addEventListener("click", Multiply);
+MultiplyDonuts.addEventListener("click", MultiplyButton);
 let AutoClicker = document.getElementById("autoclickButton");
-AutoClicker.addEventListener("click", AutoClick);
+AutoClicker.addEventListener("click", AutoButton);
 let ResetGame = document.getElementById("Reset");
 ResetGame.addEventListener("click", Reset);
 let Menu = document.getElementById("Dropdown");
@@ -24,6 +22,10 @@ let BakeDonutsText = document.getElementById("Bake");
 let MultiplyDonutsText = document.getElementById("Multiply");
 let AutoClickerText = document.getElementById("AutoClick");
 
+function startup(){
+    disableButton();
+}
+
 //make donuts
 function Bake() {
     if (bake <= 0) {
@@ -32,11 +34,9 @@ function Bake() {
     if (bake > 40) {
         BakeDonutsText.innerText = "Donut Count: " + bake++;
         AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick + 1;
-        AutoButton();
     } else if (bake > 85) {
         BakeDonutsText.innerText = "Donut Count: " + bake++;
         MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply + 1;
-        MultiplyButton();
     }
     else {
         console.log("Bake count: " + bake);
@@ -50,11 +50,10 @@ function MultiplyButton() {
     mulTotal = multiply - multiplyPurchase;
     BakeDonutsText.innerText = Math.pow(1.1, bake.toFixed(0));
     console.log("Purchased Multiplyer.");
-    enableMultiplyButton();
 }
 function enableMultiplyButton() {
     if (mulTotal >= 1) {
-        MultiplyDonuts = document.getElementById("Multiply").disable = false;
+        MultiplyDonuts = document.getElementById("multiplyButton").disable = false;
         BakeDonutsText.innerText = "Donut Count: " + (bake - Mcost);
     } else {
         disableButton();
@@ -68,12 +67,16 @@ function AutoButton() {
     enableAutoButton();
 }
 function enableAutoButton() {
-    if (autoTotal >= 1) {
-        AutoClicker = document.getElementById("AutoClick").disable = false;
+        AutoClicker = document.getElementById("autoclickButton").disable = false;
         BakeDonutsText.innerText = "Donut Count: " + (bake - Acost);
-    } else {
-        disableButton();
-    }
+        console.log("Activated AutoClicker")
+        if (timer == undefined) {
+            timer = setInterval(Activate, 1000);
+        }
+}
+function Activate() {
+    bake++;
+    BakeDonutsText.innerText = "Donut Count: " + bake;
 }
 //reseting the game
 function Reset() {
@@ -84,11 +87,13 @@ function Reset() {
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + resetMultiply;
     AutoClickerText.innerText = "Auto Clicker Owned: " + resetAutoclick;
     console.log("bake: " + resetBake + "\nmultiply: " + resetMultiply + "\nautoclick: " + resetAutoclick);
+    reset = true;
     disableButton();
 }
 function disableButton() {
-    MultiplyDonuts = document.getElementById("Multiply").disable = true;
-    AutoClicker = document.getElementById("AutoClick").disable = true;
+        timer != undefined;
+        MultiplyDonuts = document.getElementById("multiplyButton").disable = true;
+        AutoClicker = document.getElementById("autoclickButton").disable = true;
 }
 //dropdown functions
 function Dropdown() {
