@@ -5,7 +5,6 @@ let autoclick = 0;
 let Mcost = 45;
 let Acost = 20;
 let timer = undefined;
-let reset = false;
 
 let BakeDonuts = document.getElementById("bakeButton");
 BakeDonuts.addEventListener("click", Bake);
@@ -87,7 +86,6 @@ function Reset() {
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + resetMultiply;
     AutoClickerText.innerText = "Auto Clicker Owned: " + resetAutoclick;
     console.log("bake: " + resetBake + "\nmultiply: " + resetMultiply + "\nautoclick: " + resetAutoclick);
-    reset = true;
     disableButton();
 }
 function disableButton() {
