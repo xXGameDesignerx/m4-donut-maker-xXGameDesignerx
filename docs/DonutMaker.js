@@ -1,7 +1,7 @@
 
 let bake = 0;
-let multiply = 0;
-let autoclick = 0;
+let multiply = 1;
+let autoclick = 1;
 let Mcost = 45;
 let Acost = 20;
 let timer = undefined;
@@ -33,43 +33,43 @@ function Bake() {
         UpdateText();
     }
 }
-function UpdateText(){
-    if (bake == 40) {
-        AutoButton();
+function UpdateText() {
+    if (bake > 40 && bake <= 84) {
+        AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick;
+        AutoClicker = document.querySelector(".Abutton").disabled = false;
     }
-    if (bake == 85){
-        MultiplyButton();
+    if (bake > 85) {
+        MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply;
+        MultiplyDonuts = document.querySelector(".Mbutton").disabled = false;
     }
-    else{
+    else {
         disableButton();
     }
 }
 //multiply functions
 function MultiplyButton() {
-        MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply + 1;
-        let multiplyPurchase = 1;
-        mulTotal = multiplyPurchase -= multiply;
-        BakeDonutsText.innerText = Math.pow(1.1, bake.toFixed(0));
-        console.log("Purchased Multiplyer.");
-        enableMultiplyButton();
+    let multiplyPurchase = 1;
+    mulTotal = multiplyPurchase -= multiply;
+    BakeDonutsText.innerText = Math.pow(1.1, bake.toFixed(0));
+    console.log("Purchased Multiplyer.");
+    enableMultiplyButton();
 }
 function enableMultiplyButton() {
     console.log("Activated Multiply")
-    MultiplyDonuts = document.getElementById("multiplyButton").disable = false;
-    BakeDonutsText.innerText = "Donut Count: " + (Mcost -= bake);
+    updateBakeM = Mcost -= bake;
+    BakeDonutsText.innerText = "Donut Count: " + updateBakeM;
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + mulTotal;
 }
 //auto clicker functions
 function AutoButton() {
-        AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick + 1;
-        let autoPurchase = 1;
-        autoTotal = autoPurchase -= autoclick;
-        console.log("Purchased Autoclicker.");
-        enableAutoButton();
+    let autoPurchase = 1;
+    autoTotal = autoPurchase -= autoclick;
+    console.log("Purchased Autoclicker.");
+    enableAutoButton();
 }
 function enableAutoButton() {
-    AutoClicker = document.getElementById("autoclickButton").disable = false;
-    BakeDonutsText.innerText = "Donut Count: " + (Acost -= bake);
+    updateBakeA = Acost -= bake;
+    BakeDonutsText.innerText = "Donut Count: " + updateBakeA;
     AutoClickerText.innerText = "Auto Clicker Owned: " + autoTotal;
     console.log("Activated AutoClicker")
     if (timer == undefined) {
@@ -89,18 +89,16 @@ function Reset() {
     disableButton();
 }
 function disableButton() {
-    MultiplyDonuts = document.getElementById("multiplyButton").disable = true;
-    MultiplyDonuts.disabled = true;
-    AutoClicker = document.getElementById("autoclickButton").disable = true;
-    AutoClicker.disabled = true;
+    MultiplyDonuts = document.querySelector(".Mbutton").disabled = true;
+    AutoClicker = document.querySelector(".Abutton").disabled = true;
 }
 //dropdown functions
 function Dropdown() {
     console.log(Dropdown);
     let x = document.getElementById("dropdown-content");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
