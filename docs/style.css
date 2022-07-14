@@ -60,7 +60,6 @@ header nav ul {
     transition: 2s;
     transform: scale(1.07);
 }
-@media screen and (max-height: 450px) {
-    .dropdown-content {padding-top: 15px;}
-    .dropdown-content li {font-size: 18px;}
-  }
+#dropdown-content{
+    display: none;
+}

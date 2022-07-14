@@ -20,87 +20,87 @@ Menu.addEventListener("click", Dropdown);
 let BakeDonutsText = document.getElementById("Bake");
 let MultiplyDonutsText = document.getElementById("Multiply");
 let AutoClickerText = document.getElementById("AutoClick");
-
-window.onload = startup();
-function startup(){
-    disableButton();
-}
+disableButton();
 
 //make donuts
 function Bake() {
-    if (bake <= 0) {
+    if (bake < 0) {
         bake = 0;
     }
-    if (bake > 40) {
-        BakeDonutsText.innerText = "Donut Count: " + bake++;
-        AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick + 1;
-    } else if (bake > 85) {
-        BakeDonutsText.innerText = "Donut Count: " + bake++;
-        MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply + 1;
-    }
     else {
-        console.log("Bake count: " + bake);
-        BakeDonutsText.innerText = "Donut Count: " + bake++;
+        bake++;
+        BakeDonutsText.innerText = "Donut Count: " + bake;
+        UpdateText();
     }
-
 }
-//multiply functions
-function MultiplyButton() {
-    let multiplyPurchase = 1;
-    mulTotal = multiply - multiplyPurchase;
-    BakeDonutsText.innerText = Math.pow(1.1, bake.toFixed(0));
-    console.log("Purchased Multiplyer.");
-}
-function enableMultiplyButton() {
-    if (mulTotal >= 1) {
-        MultiplyDonuts = document.getElementById("multiplyButton").disable = false;
-        BakeDonutsText.innerText = "Donut Count: " + (Mcost - bake);
-        if (bake <= 0) {
-            bake = 0;
-        }
-    } else {
+function UpdateText(){
+    if (bake == 40) {
+        AutoButton();
+    }
+    if (bake == 85){
+        MultiplyButton();
+    }
+    else{
         disableButton();
     }
 }
+//multiply functions
+function MultiplyButton() {
+        MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply + 1;
+        let multiplyPurchase = 1;
+        mulTotal = multiplyPurchase -= multiply;
+        BakeDonutsText.innerText = Math.pow(1.1, bake.toFixed(0));
+        console.log("Purchased Multiplyer.");
+        enableMultiplyButton();
+}
+function enableMultiplyButton() {
+    console.log("Activated Multiply")
+    MultiplyDonuts = document.getElementById("multiplyButton").disable = false;
+    BakeDonutsText.innerText = "Donut Count: " + (Mcost -= bake);
+    MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + mulTotal;
+}
 //auto clicker functions
 function AutoButton() {
-    let autoPurchase = 1;
-    autoTotal = autoclick - autoPurchase;
-    console.log("Purchased Autoclicker.");
-    enableAutoButton();
+        AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick + 1;
+        let autoPurchase = 1;
+        autoTotal = autoPurchase -= autoclick;
+        console.log("Purchased Autoclicker.");
+        enableAutoButton();
 }
 function enableAutoButton() {
-        AutoClicker = document.getElementById("autoclickButton").disable = false;
-        BakeDonutsText.innerText = "Donut Count: " + (Acost - bake);
-        if (bake <= 0) {
-            bake = 0;
-        }
-        console.log("Activated AutoClicker")
-        if (timer == undefined) {
-            timer = setInterval(Activate, 1000);
-        }
-}
-function Activate() {
-    BakeDonutsText.innerText = "Donut Count: " + bake++;
+    AutoClicker = document.getElementById("autoclickButton").disable = false;
+    BakeDonutsText.innerText = "Donut Count: " + (Acost -= bake);
+    AutoClickerText.innerText = "Auto Clicker Owned: " + autoTotal;
+    console.log("Activated AutoClicker")
+    if (timer == undefined) {
+        timer = setInterval(Bake, 1000);
+    }
 }
 //reseting the game
 function Reset() {
-    let resetBake = bake * 0;
-    let resetMultiply = multiply * 0;
-    let resetAutoclick = autoclick * 0;
-    BakeDonutsText.innerText = "Donut Count: " + resetBake;
-    MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + resetMultiply;
-    AutoClickerText.innerText = "Auto Clicker Owned: " + resetAutoclick;
-    console.log("bake: " + resetBake + "\nmultiply: " + resetMultiply + "\nautoclick: " + resetAutoclick);
+    bake = 0;
+    multiply = 0;
+    autoclick = 0;
+    timer = undefined;
+    BakeDonutsText.innerText = "Donut Count: " + bake;
+    MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply;
+    AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick;
+    console.log("bake: " + bake + "\nmultiply: " + multiply + "\nautoclick: " + autoclick);
     disableButton();
 }
 function disableButton() {
-        timer != undefined;
-        MultiplyDonuts = document.getElementById("multiplyButton").disable = true;
-        AutoClicker = document.getElementById("autoclickButton").disable = true;
+    MultiplyDonuts = document.getElementById("multiplyButton").disable = true;
+    MultiplyDonuts.disabled = true;
+    AutoClicker = document.getElementById("autoclickButton").disable = true;
+    AutoClicker.disabled = true;
 }
 //dropdown functions
 function Dropdown() {
     console.log(Dropdown);
-    let navBarText = document.getElementById("Dropdown").style.marginTop = "0px";
+    let x = document.getElementById("dropdown-content");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 }
