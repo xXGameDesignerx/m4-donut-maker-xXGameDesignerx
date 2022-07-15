@@ -42,17 +42,14 @@ function UpdateText() {
         MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply;
         MultiplyDonuts = document.querySelector(".Mbutton").disabled = false;
     }
-    else {
-        disableButton();
-    }
 }
 //multiply functions
-function MultiplyButton() {
-    let multiplyPurchase = 1;
-    mulTotal = multiplyPurchase -= multiply;
-    BakeDonutsText.innerText = Math.pow(1.1, bake.toFixed(0));
+function MultiplyButton(multiplier, enabled) {
+    multiplier += 0.1;
     console.log("Purchased Multiplyer.");
-    enableMultiplyButton();
+    if (!enabled){
+        enableMultiplyButton();
+    }
 }
 function enableMultiplyButton() {
     console.log("Activated Multiply")
@@ -60,6 +57,8 @@ function enableMultiplyButton() {
     BakeDonutsText.innerText = "Donut Count: " + updateBakeM;
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + mulTotal;
 }
+let multiplier = 1;
+let enabled = false;
 //auto clicker functions
 function AutoButton() {
     let autoPurchase = 1;
