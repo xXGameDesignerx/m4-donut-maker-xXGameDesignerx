@@ -97,7 +97,7 @@ function AutoButton() {
         let autoPurchase = 1;
         autoTotal = autoPurchase -= autoclick;
         console.log("Purchased Autoclicker.");
-        Acost += 10;
+        Acost *= 1.1;
         UpdateText();
         enableAutoButton();
     } else {
