@@ -53,8 +53,8 @@ function UpdateText() {
     } else {
         MultiplyDonuts = document.querySelector(".Mbutton").disabled = true;
     }
-    AutoCostText.innerText = "Donut AutoClicker Cost: " + Acost;
-    MultiplierCostText.innerText = "Donut Multiplyer Cost: " + Mcost;
+    AutoCostText.innerText = "Donut AutoClicker Cost: " + Acost.toFixed(1);
+    MultiplierCostText.innerText = "Donut Multiplyer Cost: " + Mcost.toFixed(1);
 }
 //multiply functions
 function MultiplyButton() {
