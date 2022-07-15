@@ -5,6 +5,8 @@ let autoclick = 1;
 let Mcost = 45;
 let Acost = 20;
 let timer = undefined;
+let multiplier = 1;
+let enabled = false;
 
 let BakeDonuts = document.getElementById("bakeButton");
 BakeDonuts.addEventListener("click", Bake);
@@ -19,6 +21,7 @@ Menu.addEventListener("click", Dropdown);
 
 let BakeDonutsText = document.getElementById("Bake");
 let MultiplyDonutsText = document.getElementById("Multiply");
+let MultiplyScoreText = document.getElementById("MulScore");
 let AutoClickerText = document.getElementById("AutoClick");
 disableButton();
 
@@ -34,45 +37,67 @@ function Bake() {
     }
 }
 function UpdateText() {
-    if (bake > 40 && bake <= 84) {
+    if (bake > 20 && bake <= 44 || bake > 90 && bake <= 119) {
         AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick;
         AutoClicker = document.querySelector(".Abutton").disabled = false;
     }
-    if (bake > 85) {
+    if (bake > 45 && bake <= 80 || bake > 120 && bake <= 160) {
         MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply;
         MultiplyDonuts = document.querySelector(".Mbutton").disabled = false;
     }
 }
 //multiply functions
-function MultiplyButton(multiplier, enabled) {
-    multiplier += 0.1;
-    console.log("Purchased Multiplyer.");
-    if (!enabled){
-        enableMultiplyButton();
+function MultiplyButton() {
+    // check when we subtract the cost if we do subtract the donuts
+    if (bake >= Mcost) {
+        //Take away from the bake value
+        bake -= Mcost;
+        // Everytime we call the function we want to add 0.1 to every click
+        multiplier += .1;
+        //multiplying bake with the multiplier
+        bake * (multiplier += .1);
+        mulTotal = 1 - multiply;
+        console.log("Purchased Multiplyer.");
+        if (!enabled) {
+            enableMultiplyButton();
+        }
+    } else {
+        disableButton();
     }
 }
 function enableMultiplyButton() {
     console.log("Activated Multiply")
-    updateBakeM = Mcost -= bake;
-    BakeDonutsText.innerText = "Donut Count: " + updateBakeM;
+    // print out the new bake 
+    BakeDonutsText.innerText = "Donut Count: " + bake;
+    // print out the multiplier Owned
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + mulTotal;
+    // print out the new multipier 
+    MultiplyScoreText.innerText = "Donut Multipler: " + multiplier.toFixed(1);
+    if (mulTotal == 0) {
+        disableButton();
+    }
 }
-let multiplier = 1;
-let enabled = false;
 //auto clicker functions
 function AutoButton() {
-    let autoPurchase = 1;
-    autoTotal = autoPurchase -= autoclick;
-    console.log("Purchased Autoclicker.");
-    enableAutoButton();
+    if (bake >= Acost) {
+        bake -= Acost;
+        let autoPurchase = 1;
+        autoTotal = autoPurchase -= autoclick;
+        console.log("Purchased Autoclicker.");
+        enableAutoButton();
+    } else {
+        disableButton();
+    }
 }
 function enableAutoButton() {
-    updateBakeA = Acost -= bake;
-    BakeDonutsText.innerText = "Donut Count: " + updateBakeA;
+    BakeDonutsText.innerText = "Donut Count: " + bake;
     AutoClickerText.innerText = "Auto Clicker Owned: " + autoTotal;
     console.log("Activated AutoClicker")
     if (timer == undefined) {
         timer = setInterval(Bake, 1000);
+    }
+    if (autoTotal == 0) {
+        disableButton();
     }
 }
 //reseting the game
@@ -81,9 +106,12 @@ function Reset() {
     multiply = 0;
     autoclick = 0;
     timer = undefined;
+    multiplier = 0;
+    enabled = true;
     BakeDonutsText.innerText = "Donut Count: " + bake;
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + multiply;
     AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick;
+    MultiplyScoreText.innerText = "Donut Multipler: " + multiplier;
     console.log("bake: " + bake + "\nmultiply: " + multiply + "\nautoclick: " + autoclick);
     disableButton();
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Donut Maker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,9 +14,11 @@
         <nav>
             <button id="Dropdown" type="button" onclick="Dropdown">Menu</button>
             <ul id="dropdown-content">
-                <li class="underline">Main</li>
-                <Li class="underline">Fred the Baker Company</Li>
-                <li class="underline">Cookie Clicker</li>
+                <li class="underline"> <a id="MainLink" href="Main.html">Main</a></li>
+                <li class="underline"><a id="FredLink" href="https://en.wikipedia.org/wiki/Fred_the_Baker">Fred the
+                        Baker Company</a></li>
+                <li class="underline"><a id="CookieLink" href="https://orteil.dashnet.org/cookieclicker/">Cookie
+                        Clicker</a></li>
             </ul>
         </nav>
     </header>
@@ -27,6 +29,7 @@
         <p id="AutoClick" class="p">Auto Clicker Owned: 0</p>
         <button id="autoclickButton" class="Abutton" type="button">Purchase Auto Clicker!</button>
         <p id="Multiply" class="p">Donut Multiplyer Owned: 0</p>
+        <p id="MulScore" class="p">Donut Multiplyer: 0</p>
         <button id="multiplyButton" class="Mbutton" type="button">Purchase Multiplyer!</button>
         <p class="p">Reset the Game:</p>
         <button id="Reset" class="button" type="button" onclick="Reset">Reset Game!</button>
