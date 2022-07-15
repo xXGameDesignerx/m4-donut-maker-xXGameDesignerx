@@ -23,7 +23,10 @@ let BakeDonutsText = document.getElementById("Bake");
 let MultiplyDonutsText = document.getElementById("Multiply");
 let MultiplyScoreText = document.getElementById("MulScore");
 let AutoClickerText = document.getElementById("AutoClick");
+let AutoCostText = document.getElementById("ACost");
+let MultiplierCostText = document.getElementById("MCost");
 disableButton();
+UpdateCost();
 
 //make donuts
 function Bake() {
@@ -46,6 +49,10 @@ function UpdateText() {
         MultiplyDonuts = document.querySelector(".Mbutton").disabled = false;
     }
 }
+function UpdateCost() {
+    AutoCostText.innerText = "Donut AutoClicker Cost: " + Acost;
+    MultiplierCostText.innerText = "Donut Multiplyer Cost: " + Mcost;
+}
 //multiply functions
 function MultiplyButton() {
     // check when we subtract the cost if we do subtract the donuts
@@ -58,6 +65,7 @@ function MultiplyButton() {
         bake * (multiplier += .1);
         mulTotal = 1 - multiply;
         console.log("Purchased Multiplyer.");
+        Mcost += 20;
         if (!enabled) {
             enableMultiplyButton();
         }
@@ -73,6 +81,7 @@ function enableMultiplyButton() {
     MultiplyDonutsText.innerText = "Donut Multiplyer Owned: " + mulTotal;
     // print out the new multipier 
     MultiplyScoreText.innerText = "Donut Multipler: " + multiplier.toFixed(1);
+    UpdateCost();
     if (mulTotal == 0) {
         disableButton();
     }
@@ -84,6 +93,7 @@ function AutoButton() {
         let autoPurchase = 1;
         autoTotal = autoPurchase -= autoclick;
         console.log("Purchased Autoclicker.");
+        Acost += 10;
         enableAutoButton();
     } else {
         disableButton();
@@ -92,6 +102,7 @@ function AutoButton() {
 function enableAutoButton() {
     BakeDonutsText.innerText = "Donut Count: " + bake;
     AutoClickerText.innerText = "Auto Clicker Owned: " + autoTotal;
+    UpdateCost();
     console.log("Activated AutoClicker")
     if (timer == undefined) {
         timer = setInterval(Bake, 1000);
@@ -105,6 +116,8 @@ function Reset() {
     bake = 0;
     multiply = 0;
     autoclick = 0;
+    Mcost = 45;
+    Acost = 20;
     timer = undefined;
     multiplier = 0;
     enabled = true;
