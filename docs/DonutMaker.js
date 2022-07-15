@@ -62,7 +62,7 @@ function MultiplyButton() {
         // Everytime we call the function we want to add 0.1 to every click
         multiplier += .1;
         //multiplying bake with the multiplier
-        bake * (multiplier += .1);
+        bake * (multiplier += 1.2);
         mulTotal = 1 - multiply;
         console.log("Purchased Multiplyer.");
         Mcost += 20;
@@ -126,6 +126,8 @@ function Reset() {
     AutoClickerText.innerText = "Auto Clicker Owned: " + autoclick;
     MultiplyScoreText.innerText = "Donut Multipler: " + multiplier;
     console.log("bake: " + bake + "\nmultiply: " + multiply + "\nautoclick: " + autoclick);
+    AutoCostText.innerText = "Donut AutoClicker Cost: " + Acost;
+    MultiplierCostText.innerText = "Donut Multiplyer Cost: " + Mcost;
     disableButton();
 }
 function disableButton() {

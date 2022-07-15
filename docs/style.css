@@ -46,11 +46,23 @@ header nav ul {
     display: flex;
     list-style-type: none;
     justify-content: space-evenly;
-    width: 400px
+    width: 400px;
 }
-
-#gridbody,
-#MainSub {
+#MainSub{
+    display: grid;
+    padding: 0.8rem 5.5rem;
+    background-color: darkorchid;
+    color: pink;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: black;
+    width: 400px;
+}
+#gridbody
+ {
     display: grid;
     padding: 1.2rem 0.5rem;
     background-color: darkorchid;
